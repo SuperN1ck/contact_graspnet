@@ -9,10 +9,13 @@ git clone git@github.com:chisarie/uois.git -b inference
 ## Original Installation
 ```bash
 cd contact_graspnet
-conda env create -f contact_graspnet_env.yml
-conda activate contact_graspnet_env
+conda env create -f contact_graspnet_env.yml --prefix ./env 
+conda activate ./env
 pip install scikit-image torch==1.5.1 torchvision==0.6.1
 pip install -e ../uois
+pip install --upgrade matplotlib
+conda install -c conda-forge libstdcxx-ng
+# conda install freetype=2.10.4
 ```
 
 ## Installation in a 30 series gpu
