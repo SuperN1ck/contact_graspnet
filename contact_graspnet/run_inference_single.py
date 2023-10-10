@@ -17,12 +17,12 @@ def main(archive_dir: pathlib.Path, visualize: bool=False, overwrite: bool=True)
         rgb_uint8 = archive["rgb"]
         depth = archive["depth"]
         depth_K = archive["intrinsic_matrix"]
-        mask = archive["mask"]
+        mask = archive["mask"] if "mask" in list(archive.keys()) else None
 
     if depth.ndim == 3:
         depth = depth[..., 0]
 
-    if mask.ndim == 3:
+    if mask is not None and mask.ndim == 3:
         mask = mask[..., 0]
 
     contactgraspnet = ContactGraspNetInference()
