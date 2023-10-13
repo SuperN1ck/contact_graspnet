@@ -11,14 +11,39 @@ git clone git@github.com:chisarie/uois.git -b inference
 cd contact_graspnet
 conda env create -f contact_graspnet_env.yml --prefix ./env 
 conda activate ./env
-pip install scikit-image torch==1.5.1 torchvision==0.6.1
+pip install scikit-image torch==1.5.1 torch torchvision==0.6.1
+```
+
+## My way (`banjo`-computer) 
+
+### `env3`
+```bash
+conda create --prefix ./env3 python=3.8 -y
+mkdir -p env3/etc/conda/
+cp -r env/etc/conda env3/etc/ # "Install" cuda --> M
+conda activate ./env3
+pip install tensorflow==2.9 tensorflow-gpu==2.9 opencv-python-headless pyyaml==5.4.1 pyrender tqdm mayavi pyqt5 scikit-image tyro open3d
+pip install torch==2.0.1+cu117 torchvision==0.15.2+cu117 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu117
+pip install -e ../uois
+```
+
+### Not Working
+
+```bash
+cd contact_graspnet
+conda env create -f contact_graspnet_env.yml --prefix ./env
+conda activate ./env3
+pip install scikit-image torch==1.5.1 torch torchvision==0.6.1
+
 pip install -e ../uois
 pip install --upgrade matplotlib
 conda install -c conda-forge libstdcxx-ng
 # conda install freetype=2.10.4
+# pip install tensorflow==2.5 tensorflow-gpu=2.5
 ```
 
-## Installation in a 30 series gpu
+
+## Installation in a 30 series gpu (Eugenios way/Github: `env2`)
 
 - From https://github.com/NVlabs/contact_graspnet/issues/19#issuecomment-1179489804
 
