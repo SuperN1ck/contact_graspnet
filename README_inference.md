@@ -22,7 +22,8 @@ conda create --prefix ./env3 python=3.8 -y
 mkdir -p env3/etc/conda/
 cp -r env/etc/conda env3/etc/ # "Install" cuda --> M
 conda activate ./env3
-pip install tensorflow==2.9 tensorflow-gpu==2.9 opencv-python-headless pyyaml==5.4.1 pyrender tqdm mayavi pyqt5 scikit-image tyro open3d
+pip install tensorflow==2.9 tensorflow-gpu==2.9 opencv-python-headless pyyaml==5.4.1 pyrender tqdm mayavi pyqt5 scikit-image tyro open3d 
+pip install git+https://github.com/SuperN1ck/casino.git
 pip install torch==2.0.1+cu117 torchvision==0.15.2+cu117 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu117
 pip install -e ../uois
 ```
