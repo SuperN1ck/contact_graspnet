@@ -1,4 +1,9 @@
-import mayavi.mlab as mlab
+from casino.notebooks import is_notebook
+if not is_notebook():
+    import mayavi.mlab as mlab
+else:
+    mlab = None
+
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import cm
