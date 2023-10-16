@@ -3,7 +3,7 @@ import time
 
 import numpy as np
 import tyro
-from inference_class import ContactGraspNetInference
+from contact_graspnet.inference_class import ContactGraspNetInference
 
 
 def main(
