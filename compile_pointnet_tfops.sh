@@ -1,8 +1,16 @@
-CUDA_VERSION=11.7
+if [ -z "$1" ] 
+then
+    echo "No CUDA argument supplied using default of 11.7"
+    CUDA_VERSION=11.7
+else
+  CUDA_VERSION=$1
+fi
+echo "Using CUDA Toolkit $CUDA_VERSION Version"
+
 # CUDA_INCLUDE=' -I/usr/local/cuda/include/'
-CUDA_INCLUDE=' -I/usr/local/cuda-{$CUDA_VERSION}/include/'
+CUDA_INCLUDE=" -I/usr/local/cuda-$CUDA_VERSION/include/"
 # CUDA_LIB=' -L/usr/local/cuda/lib64/'
-CUDA_LIB=' -L/usr/local/cuda-{$CUDA_VERSION}/lib64/'
+CUDA_LIB=" -L/usr/local/cuda-$CUDA_VERSION/lib64/"
 # CPP_Version=11 # Original
 CPP_VERSION=14
 TF_CFLAGS=$(python3 -c 'import tensorflow as tf; print(" ".join(tf.sysconfig.get_compile_flags()))')
