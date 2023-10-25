@@ -16,7 +16,6 @@ sys.path.append(os.path.join(BASE_DIR))
 from contact_graspnet import config_utils
 from contact_graspnet.data import load_available_input_data
 from contact_graspnet.contact_grasp_estimator import GraspEstimator
-from contact_graspnet.visualization_utils import visualize_grasps, show_image
 
 
 class ContactGraspNetInference:
@@ -71,6 +70,8 @@ class ContactGraspNetInference:
         return pc_full, pc_colors, pred_grasps_cam, scores
 
     def visualize_results(self, rgb, segmap, pc_full, pc_colors, pred_grasps_cam, scores):
+        from contact_graspnet.visualization_utils import visualize_grasps, show_image
+
         show_image(rgb, segmap)
         visualize_grasps(
             pc_full, pred_grasps_cam, scores, plot_opencv_cam=True, pc_colors=pc_colors
