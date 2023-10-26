@@ -2,7 +2,7 @@
 
 ## Get the code
 ```bash
-git clone git@github.com:chisarie/contact_graspnet.git -b inference_single_file
+git clone git@github.com:SuperN1ck/contact_graspnet.git -b inference_single_file
 git clone git@github.com:chisarie/uois.git -b inference
 ```
 
