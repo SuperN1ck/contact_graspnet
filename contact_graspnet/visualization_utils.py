@@ -4,6 +4,11 @@ if not is_notebook():
 else:
     mlab = None
 
+try: 
+    import mayavi.mlab as mlab
+except:
+    mlab = None
+
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import cm

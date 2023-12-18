@@ -1,12 +1,12 @@
 # Installation
 
-## Get the code
+## 1. Get the code
 ```bash
 git clone git@github.com:SuperN1ck/contact_graspnet.git -b inference_single_file
 git clone git@github.com:chisarie/uois.git -b inference
 ```
 
-## Original Installation
+## 2. Original Installation
 ```bash
 cd contact_graspnet
 conda env create -f contact_graspnet_env.yml --prefix ./env 
@@ -24,6 +24,11 @@ pip install tensorflow==2.9 tensorflow-gpu==2.9 opencv-python-headless pyyaml==5
 pip install git+https://github.com/SuperN1ck/casino.git
 pip install torch==2.0.1+cu117 torchvision==0.15.2+cu117 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu117
 pip install -e ../uois
+```
+
+For visualization
+```[bash]
+pip install mayavi
 ```
 
 ### "Installing" a different CUDA version into a conda environment
@@ -55,12 +60,15 @@ export LD_LIBRARY_PATH="$LD_LIBRARY_PATH_BAK"
 export LIBRARY_PATH="$LIBRARY_PATH_BAK"
 ```
 
-## Post-Install
+## 3. Post-Install
 After you have successfully create a env, don't forget to recompile `pointnet2 tf_ops`:
 ```bash
 sh compile_pointnet_tfops.sh
 ```
 *If you use a different CUDA Toolkit version other than `11.7`, make sure to update it in `compile_pointnet_tfops.sh`*
+
+## 4. Download Checkpoints
+Check [the original readme](README.md#model) for the download link of the trained model.
 
 ## [DEPRECATED] Installation in a 30 series gpu (Eugenios way/Github: `env2`)
 

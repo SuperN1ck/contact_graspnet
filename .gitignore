@@ -8,3 +8,5 @@ checkpoints/*
 **/tf_ops/**
 **/inference/**
 env/
+*.egg-info/
+*.cu.o
