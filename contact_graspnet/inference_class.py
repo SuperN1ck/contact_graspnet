@@ -19,7 +19,7 @@ from contact_graspnet.contact_grasp_estimator import GraspEstimator
 
 
 class ContactGraspNetInference:
-    def __init__(self) -> None:
+    def __init__(self, forward_passes: int = 1) -> None:
         ckpt_dir = pathlib.Path(__file__).parents[1] / "checkpoints/scene_test_2048_bs3_hor_sigma_001"
 
         # Build the model
