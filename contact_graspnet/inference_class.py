@@ -3,7 +3,11 @@ import os
 import sys
 import glob
 import time
-from uois.inference import UOISInference
+try:
+    from uois.inference import UOISInference
+except Exception as e:
+    import logging
+    logging.info("UOIS could not be imported")
 
 import tensorflow.compat.v1 as tf
 
