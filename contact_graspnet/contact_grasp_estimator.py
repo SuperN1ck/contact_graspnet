@@ -23,7 +23,7 @@ class GraspEstimator:
     
     :param cfg: config dict
     """
-    def __init__(self, cfg):
+    def __init__(self, cfg, forward_passes: int=1):
         
         if 'surface_grasp_logdir_folder' in cfg:
             # for sim evaluation
@@ -35,11 +35,11 @@ class GraspEstimator:
 
         self._model_func = importlib.import_module("contact_graspnet." + self._contact_grasp_cfg['MODEL']['model'])
         self._num_input_points = self._contact_grasp_cfg['DATA']['raw_num_points'] if 'raw_num_points' in self._contact_grasp_cfg['DATA'] else self._contact_grasp_cfg['DATA']['num_point']
-        
-        self.placeholders = self._model_func.placeholder_inputs(self._contact_grasp_cfg['OPTIMIZER']['batch_size'],
+        self.placeholders = self._model_func.placeholder_inputs(forward_passes, # Dirty hack?
                                                                 self._num_input_points, 
                                                                 self._contact_grasp_cfg['DATA']['input_normals'])
         self.model_ops = {}
+        self.forward_passes = forward_passes
 
     def build_network(self):
         """
@@ -182,8 +182,8 @@ class GraspEstimator:
         if len(pc.shape) == 2:
             pc_batch = pc[np.newaxis,:,:]
 
-        if forward_passes > 1:
-            pc_batch = np.tile(pc_batch, (forward_passes,1,1))
+        # Ignore forward_passes
+        pc_batch = np.tile(pc_batch, (self.forward_passes,1,1))
             
         feed_dict = {self.placeholders['pointclouds_pl']: pc_batch,
                     self.placeholders['is_training_pl']: False}
